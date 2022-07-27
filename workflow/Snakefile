@@ -20,7 +20,7 @@ include: "rules/plot.smk"
 rule all:
     input:
         "results/benchmark.tsv",
-        expand("results/plot/benchmark.{ext}", ext=["html", "svg", "pdf"]),
+        expand("results/plot/benchmark.{ext}", ext=["html", "svg"]),
         expand(
             "results/validation/{item.annotation}/{item.scenario}/vcf_v/{item.sample}_annotated_{item.annotation}.vcf.identical",
             item=VALID_WILDCARD_COMBINATIONS.itertuples(),

@@ -3,7 +3,7 @@ rule plot:
         data="results/benchmark.tsv",
     output:
         html="results/plot/benchmark.html",
-        images=expand("results/plot/benchmark.{ext}", ext=["pdf", "svg"]),
+        images=[report("results/plot/benchmark.svg")],
     params:
         scenarios=SCENARIOS,
     log:
@@ -21,7 +21,7 @@ rule aggregate_benchmarks:
             item=VALID_WILDCARD_COMBINATIONS.query("sample != 'HG002'").itertuples(),
         ),
     output:
-        tsv="results/benchmark.tsv",
+        tsv=report("results/benchmark.tsv"),
     log:
         "logs/plot/aggregate_benchmarks.log",
     run:
