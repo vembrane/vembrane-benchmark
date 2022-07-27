@@ -24,11 +24,14 @@ At the moment, the following tools are considered:
 
 
 ## Configuration
- In order to change the number of benchmark repeats, include additional tools or add filtering scenarios, edit [`config/config.yaml`](config/config.yaml).
- When adding an additional tool, you also need to create a corresponding conda environment definition file in [`workflow/envs/`](workflow/envs).
- This file needs to be named exactly like the tool name you used in the [`config/config.yaml`](config/config.yaml) definition, i.e. `<tool_name>.yml`.
+By editing the [`config/config.yaml`](config/config.yaml) file, you can easily adjust or extend the `benchmark`.
+With the `repeats` keyword, you can adjust the number of repeats run per combination of `filetypes` and scenarios (any of the scenarios under `annotations`) for each of the specified `tool`s.
+By adding to any of these levels, you can extend the benchmark.
+When adding filter scenarios and filetypes, please make sure that the respective tool can handle them.
+When adding a new tool, you also need to provide an `invocation` entry in the configuration file and a corresponding conda environment definition file in [`workflow/envs/`](workflow/envs).
+This file needs to be named exactly like the tool name you used in the [`config/config.yaml`](config/config.yaml) definition, i.e. `<tool_name>.yml`.
 
- For example, the entry for vembrane looks like this:
+For example, the entry for vembrane looks like this:
  ```yaml
 # The tool's name
 vembrane:
