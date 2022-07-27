@@ -6,6 +6,9 @@ min_version("7.8.5")
 configfile: "config/config.yaml"
 
 
+report: "report/workflow.rst"
+
+
 include: "rules/common.smk"
 include: "rules/download.smk"
 include: "rules/annotation.smk"
