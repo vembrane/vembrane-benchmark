@@ -1,0 +1,8 @@
+name: filter_vep
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - ensembl-vep ==107.0
+

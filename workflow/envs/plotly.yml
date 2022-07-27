@@ -1,0 +1,12 @@
+name: plotly
+channels:
+  - plotly
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python ==3.10.5
+  - plotly ==5.9.0
+  - python-kaleido ==0.2.1
+  - pandas ==1.4.3
+

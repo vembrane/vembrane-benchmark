@@ -1,0 +1,6 @@
+name: curl
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - curl ==7.83.1

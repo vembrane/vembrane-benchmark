@@ -1,0 +1,9 @@
+name: validation
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - bcftools ==1.15.1
+  - python =3.9
+  - vembrane ==0.10.1

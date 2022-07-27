@@ -1,0 +1,8 @@
+name: vembrane
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - python =3.9
+  - vembrane ==0.10.1

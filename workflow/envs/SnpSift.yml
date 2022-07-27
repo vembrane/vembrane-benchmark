@@ -1,0 +1,9 @@
+name: SnpSift
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - snpsift ==5.1
+  - gzip ==1.12
+

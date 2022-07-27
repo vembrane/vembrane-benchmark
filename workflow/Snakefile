@@ -1,0 +1,24 @@
+from snakemake.utils import min_version
+
+min_version("7.8.5")
+
+
+configfile: "config/config.yaml"
+
+
+include: "rules/common.smk"
+include: "rules/download.smk"
+include: "rules/annotation.smk"
+include: "rules/filter.smk"
+include: "rules/validation.smk"
+include: "rules/plot.smk"
+
+
+rule all:
+    input:
+        "results/benchmark.tsv",
+        expand("results/plot/benchmark.{ext}", ext=["html", "svg", "pdf"]),
+        expand(
+            "results/validation/{item.annotation}/{item.scenario}/vcf_v/{item.sample}_annotated_{item.annotation}.vcf.identical",
+            item=VALID_WILDCARD_COMBINATIONS.itertuples(),
+        ),

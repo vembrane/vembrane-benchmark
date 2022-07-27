@@ -1,0 +1,86 @@
+benchmark:
+  repeats: 10
+  tool:
+    vembrane:
+      annotations:
+        vep:
+          filter_all: 'False'
+          filter_none: 'True'
+          at_least_2_platforms: 'INFO["platforms"] >= 2'
+          format_dp: 'any(FORMAT["DP"][s] > 1250 for s in SAMPLES if "DP" in FORMAT)'
+          uncertain: '"uncertain_significance" in ANN["CLIN_SIG"] or not (ID and ID.startswith("rs"))'
+        snpeff:
+          impact_high: 'ANN["Annotation_Impact"] == "HIGH"'
+      filetypes:
+        - "bcf_b"
+        - "vcf_v"
+      invocation: vembrane filter '$FILTER'
+
+
+    bcftools:
+      annotations:
+        vep:
+          filter_all: 'view -e ""'
+          filter_none: 'view -i ""'
+          at_least_2_platforms: 'view -i "platforms >= 2"'
+          uncertain: '+split-vep --annotation "ANN" -c CLIN_SIG -i "INFO/CLIN_SIG[*] == ''uncertain_significance'' | (ID !~ ''^rs'')"'
+          format_dp: 'view -i "FORMAT/DP > 1250"'
+        snpeff: {}
+      filetypes:
+        - "bcf_b"
+        - "vcf_v"
+      invocation: bcftools $FILTER
+
+
+    SnpSift:
+      annotations:
+        vep:
+          filter_all: "false"
+          filter_none: "true"
+          at_least_2_platforms: "platforms >= 2"
+          format_dp: "GEN[*].DP > 1250"
+        snpeff:
+          impact_high: "ANN[*].IMPACT has 'HIGH'"
+      filetypes:
+        - "vcf_v"
+      invocation: SnpSift filter "$FILTER"
+
+
+    filter_vep:
+      annotations:
+        vep:
+          filter_all: '0'
+          filter_none: 'not 0'
+          at_least_2_platforms: 'platforms >= 2'
+          uncertain: '(CLIN_SIG is uncertain_significance) or not (ID and ID matches "^rs")'
+        snpeff: {}
+      filetypes:
+        - "vcf_v"
+      invocation: filter_vep --vcf_info_field ANN --filter '$FILTER' -i
+
+
+    bio-vcf:
+      annotations:
+        vep:
+          filter_all: --filter 'false'
+          filter_none: --filter 'true'
+          at_least_2_platforms: --filter 'rec.info.platforms >= 2'
+          # format_dp: --sfilter 's.dp > 1250'  # this is all(dp > 1250), not any(dp > 1250)
+        snpeff: {}
+      filetypes:
+        - "vcf_v"
+      invocation: bio-vcf --num-threads 1 $FILTER <
+
+
+    slivar:
+      annotations:
+        vep:
+          filter_all: --info='false'
+          filter_none: --info='true'
+          at_least_2_platforms: --info='INFO.platforms > 1'  # 'INFO.platforms >= 2'  is a syntax error!
+          # format_dp: --pass-only --sample-expr='sample.DP > 1250'
+        snpeff: {}
+      filetypes:
+        - "vcf_v"
+        - "bcf_b"
+      invocation: slivar expr $FILTER -v
