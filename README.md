@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/305723104.svg)](https://zenodo.org/badge/latestdoi/305723104)
+
 # vembrane-benchmark
 This is a snakemake workflow for benchmarking different VCF filtering tools.
 It makes use of [GIAB](https://www.nist.gov/programs-projects/genome-bottle) samples `HG001`, `HG002`, `HG003` and `HG004`, restricted to chromosome 1, normalised with `bcftools norm -N -m-any` and annotated with [SnpEff](https://pcingola.github.io/SnpEff/se_introduction/) and [VEP](https://ensembl.org/info/docs/tools/vep/index.html).
