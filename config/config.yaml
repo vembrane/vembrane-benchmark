@@ -75,10 +75,10 @@ benchmark:
     slivar:
       annotations:
         vep:
-          filter_all: --info='false'
-          filter_none: --info='true'
-          at_least_2_platforms: --info='INFO.platforms > 1'  # 'INFO.platforms >= 2'  is a syntax error!
-          format_dp: --alias resources/empty_alias.txt --pass-only --sample-expr=':sample.DP > 1250'
+          filter_all: --info 'false'
+          filter_none: --info 'true'
+          at_least_2_platforms: --info 'INFO.platforms >= 2'
+          format_dp: --alias resources/empty_alias.txt --pass-only --sample-expr ':sample.DP > 1250'
         snpeff: {}
       filetypes:
         - "vcf_v"
