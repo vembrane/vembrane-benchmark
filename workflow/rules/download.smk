@@ -130,12 +130,12 @@ rule restrict_to_chromosome_1:
     output:
         "results/raw/chr1/{file}.vcf",
     conda:
-        "../envs/vembrane.yml"
+        "../envs/bcftools.yml"
     log:
         "logs/restrict_to_chromosome_1/{file}.log",
     shell:
         """
-        vembrane filter "CHROM == 'chr1'" {input} > {output}
+        bcftools view -r chr1 {input} > {output}
         """
 
 
