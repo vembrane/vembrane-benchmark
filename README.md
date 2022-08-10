@@ -70,7 +70,7 @@ vembrane:
 
 ### Tools
 At the moment, the following tools are considered:
- - [`vembrane`](http://github.com/vembrane/vembrane) (v0.10.1)
+ - [`vembrane`](http://github.com/vembrane/vembrane) (v0.11.1)
  - [`bcftools`](https://samtools.github.io/bcftools/bcftools.html#expressions) (v1.15.1)
  - [`SnpSift`](https://pcingola.github.io/SnpEff/ss_introduction/) (v5.1)
  - [`filter_vep`](https://www.ensembl.org/info/docs/tools/vep/script/vep_filter.html) (v107.0)
