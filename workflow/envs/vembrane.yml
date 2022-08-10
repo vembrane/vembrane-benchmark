@@ -4,5 +4,5 @@ channels:
   - bioconda
   - defaults
 dependencies:
-  - python =3.9
-  - vembrane ==0.10.1
+  - python =3.10
+  - vembrane ==0.11.1
