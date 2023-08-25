@@ -1,0 +1,10 @@
+name: vcffilterjdk
+channels:
+  - conda-forge
+  - bioconda
+  - defaults
+dependencies:
+  - openjdk ==17.0.3
+  - gradle ==7.4.2
+  - git ==2.38.1
+
