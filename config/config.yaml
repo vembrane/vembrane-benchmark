@@ -85,15 +85,3 @@ benchmark:
         - "vcf_v"
         - "bcf_b"
       invocation: SLIVAR_IMPACTFUL_ORDER=resources/slivar-impactfulness-order.txt slivar expr $FILTER -v
-
-
-    vcffilterjdk:
-      annotations:
-        vep:
-          filter_all: 'return false;'
-          filter_none: 'return true;'
-          at_least_2_platforms: 'return variant.getAttributeAsInt("platforms", 0) > 2;'
-        snpeff: {}
-      filetypes:
-        - "vcf_v"
-      invocation: vcffilterjdk -e '$FILTER'
